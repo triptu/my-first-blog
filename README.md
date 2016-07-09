@@ -1,2 +1,2 @@
 # my-first-blog
-https://tushar.ml
+http://tushar.ml
