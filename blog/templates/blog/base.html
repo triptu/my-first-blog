@@ -17,14 +17,17 @@
             <!--Adding button for posting new draft or publishing new post-->
             {% if user.is_authenticated %}
                 <a href="{% url 'post_new' %}" class="top-menu">
-                    <span class="glyphicon glyphicon-plus"></span>
+                    <abbr title="Add new post">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </abbr>
+                </a>
+            <!--Adding button for checking drafts.-->
+                <a href="{% url 'post_draft_list' %}" class="top-menu">
+                    <abbr title="See Drafts">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </abbr>
                 </a>
             {% endif %}
-
-            <!--Adding button for checking drafts.-->
-            <a href="{% url 'post_draft_list' %}" class="top-menu">
-                <span class="glyphicon glyphicon-edit"></span>
-            </a>
 
             <h1><a href="/">Welcome to my Blog</a></h1>
         </div>
