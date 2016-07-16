@@ -21,11 +21,21 @@
                         <span class="glyphicon glyphicon-plus"></span>
                     </abbr>
                 </a>
-            <!--Adding button for checking drafts.-->
+                <!--Adding button for checking drafts.-->
                 <a href="{% url 'post_draft_list' %}" class="top-menu">
                     <abbr title="See Drafts">
                         <span class="glyphicon glyphicon-edit"></span>
                     </abbr>
+                </a>
+                <!--Welcome user-->
+                <p class="top-menu" style="font-size:20">
+                    Hello {{ user.username }}
+                    <small>(<a href="{% url 'logout' %}">Log out</a>)</small>
+                </p>
+            {% else %}
+                <!--Login option-->
+                <a href="{% url 'login' %}" class="top-menu">
+                    <span class="glyphicon glyphiconlock">login</span>
                 </a>
             {% endif %}
 
