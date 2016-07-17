@@ -9,9 +9,14 @@
             </div>
             <!--Use 'linebreaksbr' to show full text instead of only first 400 characters-->
             <p style="display:inline">{{ post.text|truncatechars:400}}</p>
+            <!--Show more option in case of large article-->
             {% if post.text|length > 400 %}
                 <a href="{% url 'post_detail' pk=post.pk %}">(more)</a>
             {% endif %}
+            <!--Show number of comments for each article.-->
+            <br>-<a href="{% url 'blog.views.post_detail' pk=post.pk %}">
+                {{ post.comments.count }} Comments
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
