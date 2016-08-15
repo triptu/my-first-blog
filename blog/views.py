@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm, CommentForm
 from . import echo_bot
+import json
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -70,6 +72,8 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
-def telegram(request, pk):
-    echo_bot.echo(pk)
-    return render(request, 'blog/bot.html', {'post': pk})
+@csrf_exempt
+def telegram(request):
+    data = request.body.decode("utf-8")
+    echo_bot.echo(data)
+    return render(request, 'blog/bot.html', {'post': data})
