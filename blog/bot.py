@@ -46,7 +46,7 @@ def hroom(n):
             h= parts[0]
     if r:
         for pos, rns in enumerate(room):
-            if r==rns:
+            if r in rns:
                 if h:
                     if h.lower()==hostel[pos].lower():
                         results.append(pos)
