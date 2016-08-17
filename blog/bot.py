@@ -1,5 +1,22 @@
 data, name, room, idno, hostel, sex = [], [], [], [], [], []
 
+help_text = '''This bot can search details of students enrolled \
+before 2016.
+Usage(3 ways)-
+1. <name>
+2. i <id or its part>
+3. h <hostel_code room no.>
+
+egs.
+myName
+firstname last_name
+partial_na
+h rm 9999
+h 8888
+i 2014A0PS999
+i 999'''
+
+
 with open('students.csv') as f:
     for line in f:
         data.append(line)
@@ -60,6 +77,12 @@ def hroom(n):
 
 #ive it a query it will give you result
 def main(query):
+    results=[]
+    if query=='/start' or query=='/help':
+        results.append(help_text)
+        return results
+
+
     if query[0].lower()=='h' and query[1]==" ":
         results = hroom(query[1:].strip())
     elif query[0].lower()=='i' and query[1]==" ":
@@ -76,7 +99,7 @@ def get(results):
         s=""
         for pos, i in enumerate(results):
             if pos!=0:
-                s+="---------\n"
+                s+="--------------\n"
             s+="Name-%s\nRoom-%s %s\nId-%s\n" %(name[i], hostel[i], room[i], idno[i])
             if pos==10:
                 break
