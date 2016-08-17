@@ -79,7 +79,7 @@ def hroom(n):
 def main(query):
     results=[]
     if query=='/start' or query=='/help':
-        results.append(help_text)
+        results.append("help")
         return results
 
 
@@ -97,6 +97,9 @@ def get(results):
         return "No result."
     else:
         s=""
+        if results[0]=="help":
+            return help_text
+
         for pos, i in enumerate(results):
             if pos!=0:
                 s+="--------------\n"
