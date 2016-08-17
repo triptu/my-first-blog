@@ -1,2 +1,3 @@
 # my-first-blog
-http://tushar.ml
+https://tushartrip.pythonanywhere.com/
+
