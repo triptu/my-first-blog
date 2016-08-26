@@ -83,10 +83,15 @@ def main(query):
         return results
 
 
-    if query[0].lower()=='h' and query[1]==" ":
+    if query[0].lower()=='h' and (query[1]==" " or query[1].isdigit()):
         results = hroom(query[1:].strip())
-    elif query[0].lower()=='i' and query[1]==" ":
+    elif query[0].lower()=='i' and (query[1]==" " or query[1].isdigit()):
         results = idSearch(query[1:].strip())
+    elif query[0].isalpha() and query[1].isdigit():
+        maph = {'r':'rm', 'b':'bd', 'm':'mr', 'c':'cvr'}
+        if query[0].lower() not in maph:
+            return []
+        results = hroom(maph[query[0]] + " " + query[1:].strip())
     else:
         results = nameSearch(query.strip())
     return results
